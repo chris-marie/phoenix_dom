@@ -1,24 +1,32 @@
 var companies = [];
 var trs = document.getElementsByTagName('tr');
+console.log(trs.length);
 
 for (var i = 1, len = trs.length; i< len; i +=2) {
-    var tds = [];
 
+    // console.log('iteration = ' + i + ', len = ' + len);
     var company = {};
     var tr = trs[i];
-    tds = tr.getElementsByTagName('td');
+    var tds = tr.getElementsByTagName('td');
     //console.log(tds);
 
-    for ( var j = 0, len = tds.length; j < len; j++) {
-        console.log(j + ',' + tds[j]);
-
-    }
-    company.name = tr.firstElementChild.textContent;
-    company.symbole = tr.getElementsByTagName('h3')[0].textContent.trim();
+    company.name = tds[0].textContent.trim();
+    company.symbol = tr.getElementsByTagName('h3')[0].textContent.trim();
+    company.MarketCap = tds[2].textContent.trim();
+    company.adrTSO = tds[3].textContent.trim();
+    company.country = tds[4].textContent.trim();
+    company.IPOyr = tds[5].textContent.trim();
+    company.subsector= tds[6].textContent.trim();
 
     console.log(company.name);
-    companies.push(company);
+    console.log(company.symbol);
+    console.log(company.MarketCap);
+    console.log(company.adrTSO);
+    console.log(company.country);
+    console.log(company.IPOyr);
+    console.log(company.subsector);
 
+    companies.push(company);
 }
 console.log('FINISH');
 console.log(companies);
